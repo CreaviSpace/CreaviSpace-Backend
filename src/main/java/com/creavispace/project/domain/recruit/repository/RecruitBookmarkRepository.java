@@ -1,6 +1,6 @@
 package com.creavispace.project.domain.recruit.repository;
 
-import com.creavispace.project.domain.recruit.entity.RecruitBookmark;
+import com.creavispace.project.domain.bookmark.entity.RecruitBookmark;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

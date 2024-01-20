@@ -1,6 +1,7 @@
-package com.creavispace.project.domain.recruit.entity;
+package com.creavispace.project.domain.comment.entity;
 
 import com.creavispace.project.domain.common.entity.BaseTimeEntity;
+import com.creavispace.project.domain.recruit.entity.Recruit;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -11,17 +12,18 @@ import java.util.List;
 @Builder(toBuilder = true)
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @AllArgsConstructor
-public class RecruitBookmark extends BaseTimeEntity {
+public class RecruitComment extends BaseTimeEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    private String content;
+
     @ManyToOne
     @JoinColumn(name = "recruit_id")
-    private List<Recruit> recruitList;
+    private Recruit recruit;
 
     @ManyToOne
     @JoinColumn(name = "member_id")
-    private List<Member> memberList;
-
+    private Member member;
 }
