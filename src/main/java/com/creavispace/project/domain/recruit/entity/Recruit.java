@@ -3,6 +3,7 @@ package com.creavispace.project.domain.recruit.entity;
 import com.creavispace.project.domain.bookmark.entity.RecruitBookmark;
 import com.creavispace.project.domain.comment.entity.RecruitComment;
 import com.creavispace.project.domain.common.entity.BaseTimeEntity;
+import com.creavispace.project.domain.tech.entity.RecruitTechStack;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -39,7 +40,7 @@ public class Recruit extends BaseTimeEntity {
     private LocalDateTime end;
 
     @Column(nullable = false)
-    private String contect;
+    private String contact;
 
     @Column(nullable = false)
     private String title;
@@ -54,8 +55,7 @@ public class Recruit extends BaseTimeEntity {
 
     private int viewCount;
 
-    @OneToMany(mappedBy = "recruit")
-    private List<RecruitImage> imageList;
+    private String contactWay;
 
     @OneToMany(mappedBy = "recruit")
     private List<RecruitPosition> positionList;

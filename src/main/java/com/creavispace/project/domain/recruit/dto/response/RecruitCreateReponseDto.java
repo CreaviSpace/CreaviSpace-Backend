@@ -30,7 +30,9 @@ public class RecruitCreateReponseDto {
 
     private LocalDateTime end;
 
-    private String contect;
+    private String contact;
+
+    private String contactWay;
 
     private String title;
 

@@ -1,5 +1,6 @@
-package com.creavispace.project.domain.common.entity;
+package com.creavispace.project.domain.tech.entity;
 
+import com.creavispace.project.domain.common.entity.BaseTimeEntity;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -18,5 +19,5 @@ public class TechStack extends BaseTimeEntity {
 
     private String techStack;
 
-    private String iconUrl;
+    private String url;
 }

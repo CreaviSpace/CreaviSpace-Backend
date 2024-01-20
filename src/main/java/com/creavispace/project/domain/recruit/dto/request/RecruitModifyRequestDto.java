@@ -24,7 +24,7 @@ public class RecruitModifyRequestDto {
 
     private int workDay;
 
-    private String contect;
+    private String contact;
 
     private String title;
 

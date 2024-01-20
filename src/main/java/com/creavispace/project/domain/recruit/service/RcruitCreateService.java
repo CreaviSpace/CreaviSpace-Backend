@@ -5,7 +5,6 @@ import com.creavispace.project.domain.common.dto.SuccessResponseDto;
 import com.creavispace.project.domain.recruit.dto.request.RecruitCreateRequestDto;
 import com.creavispace.project.domain.recruit.dto.response.RecruitCreateReponseDto;
 import com.creavispace.project.domain.recruit.entity.Recruit;
-import com.creavispace.project.domain.recruit.entity.RecruitImage;
 import com.creavispace.project.domain.recruit.entity.RecruitPosition;
 import com.creavispace.project.domain.recruit.repository.RecruitImageRepository;
 import com.creavispace.project.domain.recruit.repository.RecruitPositionRepository;
@@ -27,7 +26,6 @@ public class RcruitCreateService {
 
     private final RecruitRepository recruitRepository;
     private final RecruitPositionRepository recruitPositionRepository;
-    private final RecruitImageRepository recruitImageRepository;
     private final TimeUtil timeUtil;
 
     @Transactional
@@ -73,7 +71,8 @@ public class RcruitCreateService {
                 .endDay(endDay)
                 .workDay(recruitCreateRequestDto.getWorkDay())
                 .end(end)
-                .contect(recruitCreateRequestDto.getContect())
+                .contact(recruitCreateRequestDto.getContact())
+                .contactWay(recruitCreateRequestDto.getContactWay())
                 .title(recruitCreateRequestDto.getTitle())
                 .content(recruitCreateRequestDto.getContent())
                 .thumbnail(recruitCreateRequestDto.getThumbnail())
@@ -101,17 +100,17 @@ public class RcruitCreateService {
             recruitPositionRepository.saveAll(recruitPositions);
         }
         
-        // RecruitImage 저장
-        if (recruitCreateRequestDto.getImageList() != null) {
-            List<RecruitImage> recruitImages = recruitCreateRequestDto.getImageList().stream()
-                    .map(imageDto -> RecruitImage.builder()
-                            .url(imageDto.getUrl())
-                            .recruit(recruit)
-                            .build())
-                    .collect(Collectors.toList());
-
-            recruitImageRepository.saveAll(recruitImages);
-        }
+//        // RecruitImage 저장
+//        if (recruitCreateRequestDto.getImageList() != null) {
+//            List<RecruitImage> recruitImages = recruitCreateRequestDto.getImageList().stream()
+//                    .map(imageDto -> RecruitImage.builder()
+//                            .url(imageDto.getUrl())
+//                            .recruit(recruit)
+//                            .build())
+//                    .collect(Collectors.toList());
+//
+//            recruitImageRepository.saveAll(recruitImages);
+//        }
 
 
         RecruitCreateReponseDto create = RecruitCreateReponseDto.builder()
@@ -124,13 +123,13 @@ public class RcruitCreateService {
                 .endDay(recruit.getEndDay())
                 .workDay(recruit.getWorkDay())
                 .end(recruit.getEnd())
-                .contect(recruit.getContect())
+                .contact(recruit.getContact())
+                .contactWay(recruit.getContactWay())
                 .title(recruit.getTitle())
                 .content(recruit.getContent())
                 .thumbnail(recruit.getThumbnail())
                 .status(recruit.isStatus())
                 .viewCount(recruit.getViewCount())
-                .imageList(recruit.getImageList())
                 .positionList(recruit.getPositionList())
                 .build();
 

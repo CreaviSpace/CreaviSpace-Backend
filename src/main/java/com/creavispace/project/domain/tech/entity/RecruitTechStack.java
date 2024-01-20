@@ -1,6 +1,8 @@
-package com.creavispace.project.domain.recruit.entity;
+package com.creavispace.project.domain.tech.entity;
 
 import com.creavispace.project.domain.common.entity.BaseTimeEntity;
+import com.creavispace.project.domain.recruit.entity.Recruit;
+import com.creavispace.project.domain.tech.entity.TechStack;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -9,12 +11,14 @@ import lombok.*;
 @Builder(toBuilder = true)
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @AllArgsConstructor
-public class RecruitImage extends BaseTimeEntity {
+public class RecruitTechStack extends BaseTimeEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String url;
+    @ManyToOne
+    @JoinColumn(name = "tech_stack_id")
+    private TechStack techStack;
 
     @ManyToOne
     @JoinColumn(name = "recruit_id")

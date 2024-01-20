@@ -43,7 +43,7 @@ public class RecruitModifyService {
                     .startDay(recruitModifyRequestDto.getStartDay())
                     .endDay(recruitModifyRequestDto.getEndDay())
                     .workDay(recruitModifyRequestDto.getWorkDay())
-                    .contect(recruitModifyRequestDto.getContect())
+                    .contact(recruitModifyRequestDto.getContact())
                     .title(recruitModifyRequestDto.getTitle())
                     .content(recruitModifyRequestDto.getContent())
                     .thumbnail(recruitModifyRequestDto.getThumbnail())

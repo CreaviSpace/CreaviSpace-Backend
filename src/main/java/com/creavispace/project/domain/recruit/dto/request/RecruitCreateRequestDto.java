@@ -25,7 +25,9 @@ public class RecruitCreateRequestDto {
 
     private LocalDateTime end;
 
-    private String contect;
+    private String contact;
+
+    private String contactWay;
 
     private String title;
 
@@ -38,4 +40,5 @@ public class RecruitCreateRequestDto {
     private List<RecruitPositionDto> positionList;
 
     private List<RecruitImageDto> imageList;
+
 }
