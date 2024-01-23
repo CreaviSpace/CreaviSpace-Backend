@@ -6,7 +6,7 @@ import com.creavispace.project.domain.member.dto.request.MemberUpdateRequestDto;
 import com.creavispace.project.domain.member.dto.request.MemberSaveRequestDto;
 import com.creavispace.project.domain.member.entity.Member;
 import com.creavispace.project.domain.member.repository.MemberRepository;
-import java.util.List;
+import com.creavispace.project.domain.position.repository.PositionRepository;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -18,33 +18,34 @@ import org.springframework.transaction.annotation.Transactional;
 class MemberRepositoryTest {
 
     @Autowired
-    MemberRepository repository;
+    MemberRepository memberRepository;
+    @Autowired
+    PositionRepository positionRepository;
 
     @Test
     @Commit
     void testSave() {
         MemberSaveRequestDto dto = MemberSaveRequestDto.builder()
-                .memberEmail("123@naver.com")
+                .memberEmail("1r2344ㅁ4@naver.com")
                 .memberPassword("12455")
-                .memberNickname("rlardud1")
-                .memberInterested(List.of("스프링", "안드로이드"))
+                .memberNickname("rrla4ㅁr22dud1")
                 .build();
 
         Member member = new Member(dto);
-        repository.save(member);
-        System.out.println(repository.findById(member.getId()));
-        assertThat(member).isEqualTo(repository.findById(member.getId()).orElseThrow());
+        memberRepository.save(member);
+        System.out.println(memberRepository.findById(member.getId()));
+        assertThat(member).isEqualTo(memberRepository.findById(member.getId()).orElseThrow());
     }
 
     @Test
     void testRead() {
-        Member member = repository.findById(1L).orElseThrow();
+        Member member = memberRepository.findById(1L).orElseThrow();
         System.out.println(member.getMemberEmail());
     }
 
     @Test
     void testEdit() {
-        Member beforeEdit = repository.findById(1L).orElseThrow();
+        Member beforeEdit = memberRepository.findById(1L).orElseThrow();
         System.out.println(beforeEdit);
         MemberUpdateRequestDto dto = new MemberUpdateRequestDto();
         dto.setMemberPassword("바뀜");
@@ -52,7 +53,7 @@ class MemberRepositoryTest {
         beforeEdit.setMemberPassword(dto.getMemberPassword());
         beforeEdit.setMemberNickname(dto.getMemberNickname());
         beforeEdit.setMemberIntroduce(dto.getIntroduce());
-        repository.save(beforeEdit);
-        System.out.println(repository.findById(1L));
+        memberRepository.save(beforeEdit);
+        System.out.println(memberRepository.findById(1L));
     }
 }
