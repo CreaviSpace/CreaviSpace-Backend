@@ -35,7 +35,7 @@ public class RecruitModifyService {
             }
 
             // recruit 수정
-            recruit = recruit.builder()
+            Recruit recruit = recruit.builder()
                     .id(recruitModifyRequestDto.getId())
                     .kind(recruitModifyRequestDto.getKind())
                     .amount(recruitModifyRequestDto.getAmount())
