@@ -1,4 +1,4 @@
-package com.creavispace.project.domain.recruit.dto.request;
+package com.creavispace.project.domain.recruit.dto.response;
 
 import lombok.*;
 
@@ -6,7 +6,7 @@ import lombok.*;
 @Builder
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @AllArgsConstructor
-public class RecruitPositionDto {
+public class RecruitPositionResponseDto {
 
     private String position;
 
@@ -15,5 +15,5 @@ public class RecruitPositionDto {
     private int now;
 
     private boolean status;
-    
+
 }

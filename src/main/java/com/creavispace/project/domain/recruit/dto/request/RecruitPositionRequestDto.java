@@ -6,6 +6,14 @@ import lombok.*;
 @Builder
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @AllArgsConstructor
-public class RecruitImageDto {
-    private String url;
+public class RecruitPositionRequestDto {
+
+    private String position;
+
+    private int amount;
+
+    private int now;
+
+    private boolean status;
+    
 }

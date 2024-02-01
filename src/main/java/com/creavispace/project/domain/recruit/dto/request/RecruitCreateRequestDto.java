@@ -37,8 +37,6 @@ public class RecruitCreateRequestDto {
 
     private long memberId;
 
-    private List<RecruitPositionDto> positionList;
-
-    private List<RecruitImageDto> imageList;
+    private List<RecruitPositionRequestDto> positionList;
 
 }

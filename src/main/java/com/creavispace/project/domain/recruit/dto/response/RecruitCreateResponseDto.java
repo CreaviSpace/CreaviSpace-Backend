@@ -1,7 +1,5 @@
 package com.creavispace.project.domain.recruit.dto.response;
 
-import com.creavispace.project.domain.recruit.dto.request.RecruitImageDto;
-import com.creavispace.project.domain.recruit.dto.request.RecruitPositionDto;
 import lombok.*;
 
 import java.time.LocalDateTime;
@@ -11,7 +9,7 @@ import java.util.List;
 @Builder
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @AllArgsConstructor
-public class RecruitCreateReponseDto {
+public class RecruitCreateResponseDto {
     private Long id;
 
     private String memberNickname;
@@ -44,7 +42,5 @@ public class RecruitCreateReponseDto {
 
     private int viewCount;
 
-    private List<RecruitPositionDto> positionList;
-
-    private List<RecruitImageDto> imageList;
+    private List<RecruitPositionResponseDto> positionList;
 }

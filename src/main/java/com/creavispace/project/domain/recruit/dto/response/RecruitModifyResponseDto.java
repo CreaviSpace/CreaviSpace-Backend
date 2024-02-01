@@ -1,7 +1,6 @@
 package com.creavispace.project.domain.recruit.dto.response;
 
-import com.creavispace.project.domain.recruit.dto.request.RecruitImageDto;
-import com.creavispace.project.domain.recruit.dto.request.RecruitPositionDto;
+import com.creavispace.project.domain.recruit.dto.request.RecruitPositionRequestDto;
 import lombok.*;
 
 import java.time.LocalDateTime;
@@ -42,8 +41,6 @@ public class RecruitModifyResponseDto {
 
     private int viewCount;
 
-    private List<RecruitPositionDto> positionList;
-
-    private List<RecruitImageDto> imageList;
+    private List<RecruitPositionRequestDto> positionList;
 }
 

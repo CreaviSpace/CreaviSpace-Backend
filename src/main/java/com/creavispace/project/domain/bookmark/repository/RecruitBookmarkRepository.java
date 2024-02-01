@@ -12,4 +12,6 @@ public interface RecruitBookmarkRepository extends JpaRepository<RecruitBookmark
     List<RecruitBookmark> findByMember(Member member);
 
     List<RecruitBookmark> findByRecruit(Recruit recruit);
+
+    List<RecruitBookmark> findByRecruitAndMember(Recruit recruit, Member member);
 }
