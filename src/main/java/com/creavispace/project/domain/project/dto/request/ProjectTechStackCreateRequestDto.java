@@ -9,5 +9,4 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class ProjectTechStackCreateRequestDto {
     private Long techStackId;
-    private Long projectId;
 }
