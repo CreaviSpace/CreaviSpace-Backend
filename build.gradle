@@ -31,17 +31,33 @@ repositories {
 }
 
 dependencies {
+	//	oauth
+	implementation 'org.springframework.boot:spring-boot-starter-oauth2-client'
+	//spring security
+	implementation("org.springframework.boot:spring-boot-starter-security")
+	implementation("org.springframework.security:spring-security-test")
+	//jwt
+	implementation("io.jsonwebtoken:jjwt:0.9.1")
 	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
 	implementation 'org.springframework.boot:spring-boot-starter-web'
+	compileOnly("org.springframework.boot:spring-boot-devtools")
 	compileOnly 'org.projectlombok:lombok'
 	runtimeOnly 'com.h2database:h2'
 	runtimeOnly 'com.mysql:mysql-connector-j'
 	annotationProcessor 'org.projectlombok:lombok'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+	// test
 	testImplementation group: 'org.assertj', name: 'assertj-core', version: '3.24.2'
-
-	
+	// swagger
+	implementation 'org.springdoc:springdoc-openapi-starter-webmvc-ui:2.2.0'
+	// aws s3
+	implementation 'org.springframework.cloud:spring-cloud-starter-aws:2.2.6.RELEASE'
+	// image resize
+	implementation 'com.github.downgoon:marvin:1.5.5'
+	implementation 'com.github.downgoon:MarvinPlugins:1.5.5'
+	// gson
 	implementation 'com.google.code.gson:gson:2.9.0'
+	// jsonpath
 	implementation group: 'com.jayway.jsonpath', name: 'json-path', version: '2.8.0'
 }
 
