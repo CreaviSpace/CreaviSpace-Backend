@@ -1,8 +1,8 @@
 package com.creavispace.project.domain.community.dto.response;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
-import org.joda.time.LocalDateTime;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -13,16 +13,16 @@ import lombok.NoArgsConstructor;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class CommunityCreateResponseDto {
+public class CommunityResponseDto {
     private Long id;
+    private String postType;
     // enum으로 교체
-    private String kind;
+    private String category;
     private Long memberId;
-    private Integer likeCount;
     private Integer viewCount;
     private LocalDateTime createdDate;
     private LocalDateTime modifiedDate;
     private String title;
     private String content;
-    private List<String> hashTagList;
+    private List<CommunityHashTagDto> hashTags;
 }
