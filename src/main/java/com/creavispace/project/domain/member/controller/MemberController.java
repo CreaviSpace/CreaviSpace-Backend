@@ -1,6 +1,5 @@
 package com.creavispace.project.domain.member.controller;
 
-import com.creavispace.project.domain.member.dto.request.MemberJwtRequestDto;
 import com.creavispace.project.domain.member.dto.request.MemberSaveRequestDto;
 import com.creavispace.project.domain.member.dto.response.MemberResponseDto;
 import com.creavispace.project.domain.member.entity.Member;
@@ -39,10 +38,5 @@ public class MemberController {
     @PostMapping("/read/members")
     public List<Member> findAllMembers() {
         return service.findAllMembers();
-    }
-
-    @PostMapping("/member/login")
-    public ResponseEntity<String> login(@ModelAttribute MemberJwtRequestDto dto) {
-        return ResponseEntity.status(HttpStatus.OK).body(service.login(dto.getMemberEmail(), dto.getLoginType()));
     }
 }

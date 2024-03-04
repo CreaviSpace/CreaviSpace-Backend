@@ -38,7 +38,7 @@ public class CustomOauth2Service implements OAuth2UserService<OAuth2UserRequest,
         OAuthAttributes attributes = OAuthAttributes.of(registrationId, userNameAttributeName, oAuth2User.getAttributes());
 
         Member member = findOrSave(attributes);
-        httpSession.setAttribute("jwt", memberService.login(member.getMemberEmail(), member.getLoginType()));
+        httpSession.setAttribute("jwt", memberService.login(member.getMemberEmail(), member.getLoginType(), member.getId()));
         httpSession.setMaxInactiveInterval(600);
 
 
