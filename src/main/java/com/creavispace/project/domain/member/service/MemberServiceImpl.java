@@ -1,13 +1,10 @@
 package com.creavispace.project.domain.member.service;
 
 import com.creavispace.project.config.auth.utils.JwtUtil;
-import com.creavispace.project.domain.member.dto.request.MemberSaveRequestDto;
 import com.creavispace.project.domain.member.dto.response.MemberResponseDto;
 import com.creavispace.project.domain.member.entity.Member;
-import com.creavispace.project.domain.member.dto.request.MemberUpdateRequestDto;
 import com.creavispace.project.domain.member.repository.MemberRepository;
 import com.creavispace.project.domain.mypage.dto.request.MyPageModifyRequestDto;
-import com.creavispace.project.domain.mypage.dto.request.MyPageProfileRequestDto;
 import java.util.List;
 import java.util.Optional;
 import lombok.RequiredArgsConstructor;
