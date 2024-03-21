@@ -56,12 +56,19 @@ public class LoginController {
     private static final String grantRefresh = "refresh_token";
     private static final String grantDelete = "delete";
 
-    @GetMapping("/config/login")
     public ResponseEntity<JsonToken> getJwt(Member member) {
         String jwt = JwtUtil.createJwt(member.getMemberEmail(), member.getLoginType(), member.getId(), jwtSecret,
                 1000 * 60 * 60L);
         System.out.println("json Token= " + jwt);
-        sessionStore.put("jwt", "Bearer " + jwt);
+        sessionStore.put("jwt", "" + jwt);
+
+        JsonToken jsonToken = new JsonToken(jwt);
+        return ResponseEntity.status(HttpStatus.OK).body(jsonToken);
+    }
+
+    @GetMapping("/login/token")
+    public ResponseEntity<JsonToken> getJsonToken(HttpServletResponse httpServletResponse) {
+        String jwt = sessionStore.get("jwt").toString();
 
         JsonToken jsonToken = new JsonToken(jwt);
         return ResponseEntity.status(HttpStatus.OK).body(jsonToken);

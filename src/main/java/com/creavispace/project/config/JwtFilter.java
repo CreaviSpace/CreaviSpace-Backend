@@ -7,6 +7,7 @@ import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 import java.io.IOException;
 import java.util.List;
 import lombok.extern.slf4j.Slf4j;
@@ -23,10 +24,13 @@ public class JwtFilter extends OncePerRequestFilter {
 
     private String jwtSecret;
 
+    private final HttpSession httpSession;
 
-    public JwtFilter(MemberService memberService, String jwtSecret) {
+
+    public JwtFilter(MemberService memberService, String jwtSecret, HttpSession httpSession) {
         this.memberService = memberService;
         this.jwtSecret = jwtSecret;
+        this.httpSession = httpSession;
     }
 
     @Override
@@ -40,7 +44,6 @@ public class JwtFilter extends OncePerRequestFilter {
         log.info("requestURI = {}", request.getRequestURI());
         log.info("request.getContextPath= {}", request.getContextPath());
         log.info("request.getQueryString = {}", request.getQueryString());
-
 
         //authorization 헤더가 비어있으면 바로 리턴
         if (authorization == null || !authorization.startsWith("eyJhbGciOiJIUzI1NiJ9")) {
@@ -62,10 +65,11 @@ public class JwtFilter extends OncePerRequestFilter {
         String memberEmail = responseDto.memberEmail();
         String loginType = responseDto.loginType();
 
-        log.info("로그인 한 사용자 = {}, 로그인 타입 = {}",memberEmail, loginType);
+        log.info("로그인 한 사용자 = {}, 로그인 타입 = {}", memberEmail, loginType);
 
         UsernamePasswordAuthenticationToken authenticationToken =
-                new UsernamePasswordAuthenticationToken(memberId, loginType, List.of(new SimpleGrantedAuthority("ROLE_MEMBER")));
+                new UsernamePasswordAuthenticationToken(memberId, loginType,
+                        List.of(new SimpleGrantedAuthority("ROLE_MEMBER")));
 
         authenticationToken.setDetails(new WebAuthenticationDetailsSource().buildDetails(request));
         SecurityContextHolder.getContext().setAuthentication(authenticationToken);

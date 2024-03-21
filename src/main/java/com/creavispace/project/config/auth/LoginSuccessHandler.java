@@ -25,6 +25,8 @@ public class LoginSuccessHandler extends SimpleUrlAuthenticationSuccessHandler {
 
     @Autowired
     private final MemberService memberService;
+
+    private final HttpSession httpSession;
     @Override
     public void onAuthenticationSuccess(HttpServletRequest request, HttpServletResponse response,
                                         Authentication authentication) throws IOException {
@@ -35,7 +37,8 @@ public class LoginSuccessHandler extends SimpleUrlAuthenticationSuccessHandler {
             Member member = loginId.get();
             String jwt = memberService.login(member.getMemberEmail(), member.getLoginType(), member.getId());
             response.setHeader(HttpHeaders.AUTHORIZATION, jwt);
-            String header = request.getHeader(HttpHeaders.AUTHORIZATION);
+            httpSession.setAttribute("jwt", jwt);
+            String header = response.getHeader(HttpHeaders.AUTHORIZATION);
             System.out.println("header = " + header);
             response.addCookie(new Cookie("cdcdcd", "cdcdcd"));
         }
