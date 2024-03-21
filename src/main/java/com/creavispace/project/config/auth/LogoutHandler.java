@@ -13,7 +13,6 @@ public class LogoutHandler implements LogoutSuccessHandler {
             throws IOException, ServletException {
         System.out.println("------------------로그아웃------------------");
         request.getSession().setMaxInactiveInterval(0);
-        request.getHeaderNames().asIterator().forEachRemaining(System.out::println);
         System.out.println("request.getHeader(\"user-agent\") = " + request.getHeader("user-agent"));;
         System.out.println(request.getSession());
         System.out.println(request.getRemoteAddr());

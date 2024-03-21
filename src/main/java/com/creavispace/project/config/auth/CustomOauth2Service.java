@@ -25,7 +25,6 @@ public class CustomOauth2Service implements OAuth2UserService<OAuth2UserRequest,
     @Override
     public OAuth2User loadUser(OAuth2UserRequest userRequest) throws OAuth2AuthenticationException {
         System.out.println("-------------------Load User---------------------------");
-
         OAuth2UserService<OAuth2UserRequest, OAuth2User> delegate = new DefaultOAuth2UserService();
         OAuth2User oAuth2User = delegate.loadUser(userRequest);
         System.out.println(oAuth2User.getAttributes());
@@ -39,7 +38,7 @@ public class CustomOauth2Service implements OAuth2UserService<OAuth2UserRequest,
 
         Member member = findOrSave(attributes);
         httpSession.setAttribute("jwt", memberService.login(member.getMemberEmail(), member.getLoginType(), member.getId()));
-        httpSession.setMaxInactiveInterval(600);
+        httpSession.setMaxInactiveInterval(100 * 100 * 100);
 
 
         return new DefaultOAuth2User(

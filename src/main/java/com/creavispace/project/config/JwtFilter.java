@@ -34,14 +34,15 @@ public class JwtFilter extends OncePerRequestFilter {
             throws ServletException, IOException {
 
         final String authorization = request.getHeader(HttpHeaders.AUTHORIZATION);
-        request.getHeaderNames().asIterator().forEachRemaining(System.out::println);
 
         log.info("authorization = {}" , authorization);
         log.info("Headers.logintype = {}", request.getHeader("logintype"));
+        log.info("requestURI = {}", request.getRequestURI());
+        log.info("request.getContextPath= {}", request.getContextPath());
+        log.info("request.getQueryString = {}", request.getQueryString());
 
 
         //authorization 헤더가 비어있으면 바로 리턴
-        //eyJhbGciOiJIUzI1NiJ9 -> HS256 으로 인코딩 된 토큰이 아니면 리턴
         if (authorization == null || !authorization.startsWith("eyJhbGciOiJIUzI1NiJ9")) {
             log.info("인증되지 않은 사용자 입니다. authorization = {}", authorization);
             filterChain.doFilter(request, response);
