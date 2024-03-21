@@ -52,7 +52,7 @@ public class LoginSuccessHandler extends SimpleUrlAuthenticationSuccessHandler {
                 + "?response_type=code"
                 + "&client_id=KsvXIMg4NMC9CRgZ2wvg"
                 + "&state=hLiDdL2uhPtsftcU"
-                + "&https://port-0-creavispace-backend-am952nlsse11uk.sel5.cloudtype.app/login/naver");
+                + "&redirect_uri=https://port-0-creavispace-backend-am952nlsse11uk.sel5.cloudtype.app/login/naver");
         //302는 임시 리디렉션으로 클라이언트가 재요청을 보내야함
     }
 }
